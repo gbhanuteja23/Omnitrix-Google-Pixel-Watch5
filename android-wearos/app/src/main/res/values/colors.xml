@@ -1,0 +1,8 @@
+<resources>
+    <color name="omnitrix_green">#39FF14</color>
+    <color name="omnitrix_dark_green">#004D1A</color>
+    <color name="omnitrix_red">#FF2222</color>
+    <color name="omnitrix_amber">#FFAA00</color>
+    <color name="omnitrix_cyan">#00F0FF</color>
+    <color name="omnitrix_black">#000000</color>
+</resources>

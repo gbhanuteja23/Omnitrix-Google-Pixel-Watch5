@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Omnitrix</string>
+    <string name="hero_time">It\'s Hero Time!</string>
+    <string name="slap_to_transform">Slap to Transform</string>
+    <string name="recharging">RECHARGING</string>
+    <string name="self_destruct">SELF DESTRUCT</string>
+    <string name="gemini_listening">Gemini Listening...</string>
+</resources>

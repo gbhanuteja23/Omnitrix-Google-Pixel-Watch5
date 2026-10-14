@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omnitrix OS • Google Pixel Watch 5 Simulator</title>
+    <link rel="stylesheet" href="css/omnitrix.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23000' stroke='%2339ff14' stroke-width='8'/><polygon points='25,20 75,20 50,48' fill='%2339ff14'/><polygon points='25,80 75,80 50,52' fill='%2339ff14'/></svg>">
+</head>
+<body>
+    <!-- App Header -->
+    <header class="app-header">
+        <div class="brand-section">
+            <div class="omnitrix-logo-badge"></div>
+            <h1 class="app-title">
+                OMNITRIX OS 
+                <span class="badge-tag">WEAR OS 5</span>
+                <span class="badge-tag" style="border-color: #60a5fa; color: #93c5fd; background: rgba(96,165,250,0.15)">GEMINI AI NANO</span>
+            </h1>
+        </div>
+        <div class="header-actions">
+            <span class="badge-tag" id="current-state-badge">IDLE</span>
+            <span class="badge-tag" id="master-control-badge" style="display:none; border-color:#00f0ff; color:#00f0ff;">MASTER CONTROL</span>
+            <button class="btn-icon" id="btn-toggle-sound" title="Toggle Sound">
+                <span id="sound-icon">🔊</span> Audio
+            </button>
+            <button class="btn-icon" id="btn-open-settings" title="Gemini API Settings">
+                ⚙️ Gemini API
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Simulator Stage -->
+    <main class="simulator-stage">
+        
+        <!-- LEFT PANEL: GEMINI VOICE & HARDWARE SENSORS -->
+        <aside class="control-panel">
+            <div class="panel-header">
+                <span class="panel-title">🎙️ Gemini Voice-to-Action</span>
+                <button class="btn-icon" id="btn-voice-mic" style="padding: 4px 8px; font-size: 0.75rem;">
+                    🎤 Speak
+                </button>
+            </div>
+
+            <!-- Voice Orb Card -->
+            <div class="gemini-voice-card">
+                <div class="voice-orb-container">
+                    <div class="gemini-orb" id="gemini-voice-orb">
+                        <span style="font-size: 1.3rem;">✨</span>
+                    </div>
+                    <div class="voice-status-info">
+                        <h4 id="voice-status-text">Gemini AI Ready</h4>
+                        <p>Say "Hey Gemini" or press Crown</p>
+                    </div>
+                </div>
+
+                <div class="voice-transcript-box" id="voice-transcript-display">
+                    "Say 'Transform into Heatblast' or 'I need speed'..."
+                </div>
+
+                <form class="voice-sim-form" id="voice-sim-form">
+                    <input type="text" class="voice-sim-input" id="voice-sim-input" placeholder="Type voice command (e.g. 'I need fire')" autocomplete="off">
+                    <button type="submit" class="btn-send">Send</button>
+                </form>
+
+                <div class="voice-prompts-list">
+                    <h5>Quick Voice Commands:</h5>
+                    <div class="quick-prompts">
+                        <button class="prompt-chip" onclick="window.Omnitrix.voice.processVoiceCommand('Transform into Heatblast')">🔥 "Transform into Heatblast"</button>
+                        <button class="prompt-chip" onclick="window.Omnitrix.voice.processVoiceCommand('I need super speed!')">⚡ "I need super speed!" (XLR8)</button>
+                        <button class="prompt-chip" onclick="window.Omnitrix.voice.processVoiceCommand('I need brute force to smash this')">💪 "Brute force to smash this" (Four Arms)</button>
+                        <button class="prompt-chip" onclick="window.Omnitrix.voice.processVoiceCommand('Upgrade this device')">💻 "Upgrade this device" (Upgrade)</button>
+                        <button class="prompt-chip" onclick="window.Omnitrix.voice.processVoiceCommand('Scan alien DNA')">🧬 "Scan alien DNA"</button>
+                        <button class="prompt-chip" onclick="window.Omnitrix.voice.processVoiceCommand('Omnitrix status report')">📊 "Omnitrix status report"</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hardware Gestures Panel -->
+            <div class="panel-header" style="margin-top: 14px;">
+                <span class="panel-title">⌚ Pixel Watch Gestures</span>
+            </div>
+            <div class="hardware-actions-grid">
+                <button class="btn-action" id="btn-wrist-flick">
+                    👋 Flick Wrist
+                </button>
+                <button class="btn-action" onclick="window.Omnitrix.handleCrownClick()">
+                    🔘 Click Crown
+                </button>
+                <button class="btn-action" onclick="window.Omnitrix.rotateDial(-1)">
+                    ↺ Crown Left
+                </button>
+                <button class="btn-action" onclick="window.Omnitrix.rotateDial(1)">
+                    ↻ Crown Right
+                </button>
+                <button class="btn-action" onclick="window.Omnitrix.handleCorePlateClick()">
+                    💥 Slap Dial
+                </button>
+                <button class="btn-action" onclick="window.Omnitrix.toggleAmbientMode()">
+                    🌙 Ambient AOD
+                </button>
+            </div>
+        </aside>
+
+        <!-- CENTER STAGE: GOOGLE PIXEL WATCH 5 SIMULATOR -->
+        <section class="watch-viewport">
+            <div class="pixel-watch-rig">
+                <!-- Top Fluoroelastomer Band -->
+                <div class="pixel-strap-top"></div>
+
+                <!-- Pixel Watch 5 Casing -->
+                <div class="pixel-watch-casing" id="pixel-watch-casing">
+                    
+                    <!-- Side Button at 2 o'clock -->
+                    <div class="pixel-side-btn" id="pixel-side-btn" title="Side Button (Gemini Voice)"></div>
+
+                    <!-- Digital Crown at 3 o'clock -->
+                    <div class="pixel-crown-btn" id="pixel-crown" title="Digital Crown (Rotate or Click)">
+                        <div class="crown-knob-texture" id="crown-texture"></div>
+                    </div>
+
+                    <!-- Domed Glass Bezel -->
+                    <div class="pixel-glass-dome">
+                        
+                        <!-- Top Bezel Info -->
+                        <div class="pixel-bezel-top">
+                            <span class="pixel-watch-time" id="pixel-watch-time">10:10</span>
+                            <span class="pixel-watch-date" id="pixel-watch-date">TUE, OCT 14</span>
+                        </div>
+
+                        <!-- Bottom Battery Indicator -->
+                        <div class="pixel-battery-indicator">
+                            <span>⚡</span><span>100%</span>
+                        </div>
+
+                        <!-- AMOLED Screen Display (Interactive) -->
+                        <div class="pixel-screen-display" id="pixel-screen">
+
+                            <!-- 1. IDLE / STANDBY SCREEN -->
+                            <div class="watch-screen-view active" id="screen-idle">
+                                <div class="omnitrix-standby-core" id="omnitrix-core-plate">
+                                    <div class="core-outer-rim"></div>
+                                    <!-- Ben 10 Hourglass Emblem -->
+                                    <svg viewBox="0 0 100 100" class="core-hourglass-svg">
+                                        <circle cx="50" cy="50" r="46" fill="#000" stroke="#39ff14" stroke-width="4"/>
+                                        <!-- Top Neon Triangle -->
+                                        <polygon points="20,15 80,15 50,47" fill="#39ff14" />
+                                        <!-- Bottom Neon Triangle -->
+                                        <polygon points="20,85 80,85 50,53" fill="#39ff14" />
+                                        <!-- Center Interlock lines -->
+                                        <line x1="50" y1="47" x2="50" y2="53" stroke="#000" stroke-width="2" />
+                                    </svg>
+                                </div>
+                                <div class="tap-to-activate-hint">TAP TO ACTIVATE</div>
+                            </div>
+
+                            <!-- 2. POPPED / ALIEN SELECTOR DIAL SCREEN -->
+                            <div class="watch-screen-view" id="screen-selector">
+                                <div class="omnitrix-selector-container">
+                                    
+                                    <!-- Rotating Bezel Ring -->
+                                    <div class="omnitrix-raised-bezel" id="omnitrix-bezel-ring">
+                                        <div class="bezel-notches"></div>
+                                    </div>
+
+                                    <!-- Alien Header Banner -->
+                                    <div class="alien-header-info">
+                                        <div class="selected-alien-name" id="selected-alien-name">HEATBLAST</div>
+                                        <div class="selected-alien-species" id="selected-alien-species">Pyronite • Pyros</div>
+                                    </div>
+
+                                    <!-- Center Hologram Slap Down Button -->
+                                    <div class="omnitrix-core-slap-button" id="omnitrix-slap-button" onclick="window.Omnitrix.slapDownTransform()">
+                                        <div class="alien-hologram-svg-wrapper" id="alien-hologram-container">
+                                            <!-- Injected dynamically -->
+                                        </div>
+                                    </div>
+
+                                    <div class="slap-prompt-badge">SLAP TO TRANSFORM</div>
+                                    <span style="position:absolute; bottom:22px; font-size:0.62rem; color:#64748b;" id="alien-index-badge">1/10</span>
+                                </div>
+                            </div>
+
+                            <!-- 3. TRANSFORMATION BLAST SCREEN -->
+                            <div class="watch-screen-view" id="screen-transform">
+                                <div class="transform-blast-view" style="width:100%; height:100%;"></div>
+                            </div>
+
+                            <!-- 4. ACTIVE ALIEN MODE SCREEN -->
+                            <div class="watch-screen-view" id="screen-active">
+                                <div class="active-alien-container">
+                                    <div class="active-alien-name" id="active-alien-name">HEATBLAST</div>
+                                    <div class="active-alien-avatar" id="active-alien-avatar" onclick="window.Omnitrix.triggerAlienPower()" title="Tap to use power!">
+                                        <!-- Injected dynamically -->
+                                    </div>
+                                    <div class="active-alien-quote" id="active-alien-quote">"It's hero time!"</div>
+                                    
+                                    <!-- Energy Countdown Bar -->
+                                    <div class="active-timer-card">
+                                        <div class="active-timer-display" id="active-timer-display">0:30</div>
+                                        <div class="energy-progress-track">
+                                            <div class="energy-progress-bar" id="active-energy-bar"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mini Stats Grid -->
+                                    <div class="active-stats-grid" id="active-alien-stats"></div>
+                                    
+                                    <!-- Power Burst Feedback FX -->
+                                    <div id="power-fx-burst" style="position:absolute; width:100%; height:100%; pointer-events:none;"></div>
+                                </div>
+                            </div>
+
+                            <!-- 5. RECHARGE / COOLDOWN SCREEN -->
+                            <div class="watch-screen-view" id="screen-recharge">
+                                <div class="recharge-core-container">
+                                    <div class="recharge-hourglass">
+                                        <svg viewBox="0 0 100 100" style="width:100px; height:100px;">
+                                            <polygon points="20,15 80,15 50,47" fill="#ff2222" />
+                                            <polygon points="20,85 80,85 50,53" fill="#ff2222" />
+                                        </svg>
+                                    </div>
+                                    <div class="recharge-title">CORE RECHARGING</div>
+                                    <div class="recharge-countdown" id="recharge-countdown-text">8s</div>
+                                </div>
+                            </div>
+
+                            <!-- 6. SELF-DESTRUCT SCREEN -->
+                            <div class="watch-screen-view" id="screen-self-destruct">
+                                <div class="self-destruct-core">
+                                    <div class="sd-warning-badge">⚠️ SELF-DESTRUCT</div>
+                                    <div class="sd-countdown-large" id="sd-countdown-val">30</div>
+                                    <div class="sd-abort-hint">Say "Abort self-destruct" to cancel</div>
+                                </div>
+                            </div>
+
+                            <!-- 7. DNA SCAN SCREEN -->
+                            <div class="watch-screen-view" id="screen-scan">
+                                <div class="scan-beam-container">
+                                    <div class="scan-radar-disk">
+                                        <div class="scan-sweep-beam"></div>
+                                        <span style="font-size: 2.5rem; z-index:2;">🧬</span>
+                                    </div>
+                                    <div style="font-size:0.8rem; font-weight:800; color:#ffff00; letter-spacing:1px;">
+                                        SCANNING DNA...
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 8. AMBIENT AOD SCREEN -->
+                            <div class="watch-screen-view" id="screen-ambient">
+                                <div class="ambient-screen">
+                                    <div class="ambient-hourglass-outline">
+                                        <svg viewBox="0 0 100 100" style="width:60px; height:60px;">
+                                            <polygon points="25,20 75,20 50,47" fill="none" stroke="#39ff14" stroke-width="2"/>
+                                            <polygon points="25,80 75,80 50,53" fill="none" stroke="#39ff14" stroke-width="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="ambient-time">10:10</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Fluoroelastomer Band -->
+                <div class="pixel-strap-bottom"></div>
+            </div>
+        </section>
+
+        <!-- RIGHT PANEL: ALIEN CODEX & SPECIAL COMMANDS -->
+        <aside class="control-panel">
+            <div class="panel-header">
+                <span class="panel-title">🧬 Galvan Alien Codex</span>
+            </div>
+
+            <!-- Alien Preview Card -->
+            <div class="alien-preview-card">
+                <div class="preview-svg-box" id="panel-alien-svg"></div>
+                <div class="preview-alien-name" id="panel-alien-name">Heatblast</div>
+                <div class="preview-alien-species" id="panel-alien-species">Pyronite (Pyros)</div>
+                <div class="preview-alien-quote" id="panel-alien-quote">"It's hero time!"</div>
+                <div class="abilities-pill-group" id="panel-alien-abilities"></div>
+            </div>
+
+            <!-- Special Omnitrix Functions -->
+            <div class="panel-header" style="margin-top: 14px;">
+                <span class="panel-title">⚡ Omnitrix Commands</span>
+            </div>
+            <div class="hardware-actions-grid">
+                <button class="btn-action" onclick="window.Omnitrix.emergencyRecharge()">
+                    🔋 Fast Recharge
+                </button>
+                <button class="btn-action" onclick="window.Omnitrix.toggleMasterControl()">
+                    🔓 Master Control
+                </button>
+                <button class="btn-action" onclick="window.Omnitrix.startDnaScan()">
+                    🧬 Scan DNA
+                </button>
+                <button class="btn-action btn-danger" onclick="window.Omnitrix.startSelfDestruct()">
+                    💣 Self-Destruct
+                </button>
+            </div>
+            
+            <div style="margin-top: 18px; padding: 12px; background: rgba(0,0,0,0.5); border-radius: 8px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.08);">
+                <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">🚀 Pixel Watch Tips:</div>
+                <ul style="padding-left: 16px; color: #94a3b8; line-height: 1.5;">
+                    <li>Scroll mouse wheel on watch to turn Crown</li>
+                    <li>Drag up/down on the side crown to rotate dial</li>
+                    <li>Click center dial to slap & transform</li>
+                    <li>Click alien to unleash its special power</li>
+                </ul>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+        <div class="instructions-hints">
+            <span><span class="key-badge">Space</span> Slap / Transform</span>
+            <span><span class="key-badge">Enter</span> Pop Up Dial</span>
+            <span><span class="key-badge">←</span> <span class="key-badge">→</span> Rotate Dial</span>
+            <span><span class="key-badge">V</span> Speak to Gemini</span>
+        </div>
+        <div>
+            Galvan Prime Level 20 Tech • Tailored for Google Pixel Watch 5
+        </div>
+    </footer>
+
+    <!-- Gemini API Key Modal -->
+    <div class="modal-overlay" id="gemini-settings-modal">
+        <div class="modal-card">
+            <h3>⚙️ Connect Live Gemini API</h3>
+            <p>
+                The simulator has a built-in semantic Galvan engine that responds to all Ben 10 voice commands instantly. If you'd like live conversational responses using Google's cloud Gemini model, paste your Gemini API key below:
+            </p>
+            <input type="password" id="gemini-api-key-input" class="voice-sim-input" style="width: 100%; margin-bottom: 12px;" placeholder="AIzaSy...">
+            <div class="modal-actions">
+                <button class="btn-action" id="btn-close-modal">Cancel</button>
+                <button class="btn-send" id="btn-save-api-key">Save Key</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/aliens-data.js"></script>
+    <script src="js/audio-engine.js"></script>
+    <script src="js/gemini-voice.js"></script>
+    <script src="js/omnitrix-core.js"></script>
+    <script>
+        // Audio Toggle
+        const soundBtn = document.getElementById('btn-toggle-sound');
+        const soundIcon = document.getElementById('sound-icon');
+        soundBtn.addEventListener('click', () => {
+            const muted = window.OmnitrixAudio.toggleMute();
+            soundIcon.textContent = muted ? '🔇' : '🔊';
+            soundBtn.style.color = muted ? '#ff4444' : '#cbd5e1';
+        });
+
+        // Gemini Settings Modal
+        const modal = document.getElementById('gemini-settings-modal');
+        const openModalBtn = document.getElementById('btn-open-settings');
+        const closeModalBtn = document.getElementById('btn-close-modal');
+        const saveKeyBtn = document.getElementById('btn-save-api-key');
+        const keyInput = document.getElementById('gemini-api-key-input');
+
+        openModalBtn.addEventListener('click', () => {
+            keyInput.value = window.GeminiVoice.apiKey || '';
+            modal.classList.add('active');
+        });
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+        saveKeyBtn.addEventListener('click', () => {
+            window.GeminiVoice.setApiKey(keyInput.value);
+            modal.classList.remove('active');
+            window.GeminiVoice.speak("Gemini API key updated successfully.");
+        });
+
+        // Direct Mic Button
+        const micBtn = document.getElementById('btn-voice-mic');
+        micBtn.addEventListener('click', () => {
+            window.OmnitrixAudio.init();
+            window.GeminiVoice.toggleListening();
+        });
+    </script>
+</body>
+</html>

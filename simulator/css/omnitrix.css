@@ -1,0 +1,1197 @@
+/* ========================================================
+   OMNITRIX PIXEL WATCH 5 SIMULATOR - STYLESHEET
+   Level 20 Galvan Technology & Google Pixel Watch Design System
+   ======================================================== */
+
+:root {
+    --omnitrix-green: #39ff14;
+    --omnitrix-emerald: #00ff66;
+    --omnitrix-glow: rgba(57, 255, 20, 0.6);
+    --omnitrix-red: #ff2222;
+    --omnitrix-red-glow: rgba(255, 34, 34, 0.7);
+    --omnitrix-amber: #ffaa00;
+    --omnitrix-yellow: #ffff00;
+    --omnitrix-cyan: #00f0ff;
+    --pixel-case: #1a1a1e;
+    --pixel-case-rim: #2d2d34;
+    --pixel-band: #161619;
+    --oled-black: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body {
+    background: radial-gradient(circle at 50% 30%, #151b17 0%, #080d0a 60%, #030504 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Header */
+header.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    background: rgba(10, 16, 12, 0.85);
+    border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+}
+
+.brand-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.omnitrix-logo-badge {
+    width: 32px;
+    height: 32px;
+    background: #000;
+    border-radius: 50%;
+    border: 2px solid var(--omnitrix-green);
+    box-shadow: 0 0 10px var(--omnitrix-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.omnitrix-logo-badge::before,
+.omnitrix-logo-badge::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+.omnitrix-logo-badge::before {
+    border-top: 14px solid var(--omnitrix-green);
+    top: 2px;
+}
+.omnitrix-logo-badge::after {
+    border-bottom: 14px solid var(--omnitrix-green);
+    bottom: 2px;
+}
+
+h1.app-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.badge-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 20px;
+    background: rgba(57, 255, 20, 0.15);
+    color: var(--omnitrix-green);
+    border: 1px solid var(--omnitrix-green);
+    letter-spacing: 0.5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-icon {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background: rgba(57, 255, 20, 0.15);
+    border-color: var(--omnitrix-green);
+    color: #fff;
+    box-shadow: 0 0 12px var(--omnitrix-glow);
+}
+
+/* Main Studio Layout */
+main.simulator-stage {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 340px 1fr 340px;
+    gap: 20px;
+    padding: 24px;
+    max-width: 1540px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: start;
+}
+
+/* Control Panels */
+.control-panel {
+    background: rgba(14, 20, 16, 0.7);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+    border-radius: 16px;
+    padding: 18px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 8px;
+}
+
+.panel-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--omnitrix-green);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Voice Console Panel */
+.gemini-voice-card {
+    background: rgba(5, 10, 8, 0.8);
+    border-radius: 12px;
+    padding: 14px;
+    border: 1px solid rgba(57, 255, 20, 0.25);
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.voice-orb-container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.gemini-orb {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #88ff88 0%, #00bb44 60%, #004411 100%);
+    box-shadow: 0 0 15px var(--omnitrix-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.gemini-orb.listening {
+    animation: orbPulse 1.2s infinite alternate ease-in-out;
+    box-shadow: 0 0 30px var(--omnitrix-green), 0 0 50px rgba(57, 255, 20, 0.8);
+}
+
+@keyframes orbPulse {
+    0% { transform: scale(0.95); filter: hue-rotate(0deg); }
+    100% { transform: scale(1.15); filter: hue-rotate(45deg); }
+}
+
+.voice-status-info h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.voice-status-info p {
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.voice-transcript-box {
+    background: #000;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.82rem;
+    color: var(--omnitrix-green);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border: 1px dashed rgba(57, 255, 20, 0.3);
+    margin-bottom: 12px;
+    word-break: break-word;
+    font-style: italic;
+}
+
+.voice-transcript-box.flash {
+    animation: textFlash 0.5s ease-out;
+}
+
+@keyframes textFlash {
+    0% { background: rgba(57, 255, 20, 0.4); color: #fff; }
+    100% { background: #000; color: var(--omnitrix-green); }
+}
+
+.voice-sim-form {
+    display: flex;
+    gap: 8px;
+}
+
+.voice-sim-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #fff;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.voice-sim-input:focus {
+    border-color: var(--omnitrix-green);
+    box-shadow: 0 0 8px var(--omnitrix-glow);
+}
+
+.btn-send {
+    background: var(--omnitrix-green);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-send:hover {
+    background: #5eff42;
+    box-shadow: 0 0 12px var(--omnitrix-glow);
+}
+
+.voice-prompts-list {
+    margin-top: 14px;
+}
+
+.voice-prompts-list h5 {
+    font-size: 0.72rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.quick-prompts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.prompt-chip {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.76rem;
+    color: #cbd5e1;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.prompt-chip:hover {
+    background: rgba(57, 255, 20, 0.12);
+    border-color: var(--omnitrix-green);
+    color: #fff;
+    transform: translateX(3px);
+}
+
+/* ========================================================
+   CENTER STAGE: GOOGLE PIXEL WATCH 5 HARDWARE EMULATOR
+   ======================================================== */
+.watch-viewport {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px 0;
+}
+
+.pixel-watch-rig {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Watch Straps */
+.pixel-strap-top,
+.pixel-strap-bottom {
+    width: 220px;
+    height: 110px;
+    background: linear-gradient(90deg, #18191d 0%, #2a2b32 40%, #1e1f24 70%, #111215 100%);
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9), 0 10px 30px rgba(0, 0, 0, 0.7);
+    position: relative;
+}
+
+.pixel-strap-top {
+    border-bottom: 2px solid #0d0e11;
+    clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+}
+
+.pixel-strap-bottom {
+    border-top: 2px solid #0d0e11;
+    clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);
+}
+
+/* Pixel Watch Case */
+.pixel-watch-casing {
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 25%, #35363e 0%, #1e1f24 45%, #121316 75%, #0a0b0d 100%);
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.9),
+        0 0 0 2px rgba(255, 255, 255, 0.12),
+        inset 0 0 15px rgba(255, 255, 255, 0.08);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -35px 0;
+    z-index: 10;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pixel-watch-casing.flicking {
+    animation: wristFlickAnim 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes wristFlickAnim {
+    0% { transform: rotate(0deg) scale(1); }
+    35% { transform: rotate(-18deg) scale(0.96); }
+    70% { transform: rotate(14deg) scale(1.04); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Physical Hardware Buttons */
+/* 1. Digital Crown at 3 o'clock */
+.pixel-crown-btn {
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 64px;
+    background: linear-gradient(180deg, #3d3e47 0%, #1e1f24 50%, #3d3e47 100%);
+    border-radius: 6px 12px 12px 6px;
+    box-shadow: 3px 2px 10px rgba(0, 0, 0, 0.8), inset 0 0 2px rgba(255, 255, 255, 0.2);
+    cursor: ns-resize;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s;
+}
+
+.pixel-crown-btn:active,
+.pixel-crown-btn.dragging {
+    transform: translateY(-50%) scale(0.95);
+    background: linear-gradient(180deg, #50525e 0%, #2c2e35 50%, #50525e 100%);
+}
+
+.crown-knob-texture {
+    width: 100%;
+    height: 80%;
+    background: repeating-linear-gradient(
+        0deg,
+        #121316,
+        #121316 2px,
+        #3d3e47 3px,
+        #3d3e47 4px
+    );
+    border-radius: 2px;
+}
+
+/* 2. Side Button at 2 o'clock */
+.pixel-side-btn {
+    position: absolute;
+    right: 20px;
+    top: 54px;
+    width: 14px;
+    height: 38px;
+    background: linear-gradient(135deg, #42434d 0%, #1c1d22 100%);
+    border-radius: 6px;
+    transform: rotate(38deg);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.1s;
+}
+
+.pixel-side-btn:active {
+    transform: rotate(38deg) scale(0.92);
+}
+
+/* 3D Glass Dome Bezel & Reflection */
+.pixel-glass-dome {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        inset 0 0 25px rgba(0, 0, 0, 1),
+        inset 0 2px 6px rgba(255, 255, 255, 0.2),
+        0 0 0 8px #141518;
+}
+
+/* Domed Curvature Highlight */
+.pixel-glass-dome::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 45%;
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    z-index: 35;
+}
+
+/* AMOLED Screen Display (Round 380px) */
+.pixel-screen-display {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Bezel Clock & Battery Bar */
+.pixel-bezel-top {
+    position: absolute;
+    top: 14px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 30;
+    pointer-events: none;
+}
+
+.pixel-watch-time {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.pixel-watch-date {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: rgba(57, 255, 20, 0.7);
+}
+
+.pixel-battery-indicator {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    z-index: 30;
+    pointer-events: none;
+}
+
+/* Screen Views Container */
+.watch-screen-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.watch-screen-view.active {
+    display: flex;
+}
+
+/* ========================================================
+   SCREEN 1: IDLE / STANDBY OMNITRIX CORE (HOURGLASS)
+   ======================================================== */
+.omnitrix-standby-core {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #021a08 0%, #000000 85%);
+    border: 5px solid #1c221e;
+    box-shadow: 
+        0 0 35px var(--omnitrix-glow),
+        inset 0 0 20px rgba(57, 255, 20, 0.4);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: coreIdleBreathe 3s infinite ease-in-out;
+}
+
+@keyframes coreIdleBreathe {
+    0%, 100% { 
+        box-shadow: 0 0 25px var(--omnitrix-glow), inset 0 0 15px rgba(57, 255, 20, 0.3);
+        transform: scale(0.98);
+    }
+    50% { 
+        box-shadow: 0 0 45px rgba(57, 255, 20, 0.8), inset 0 0 30px rgba(57, 255, 20, 0.6);
+        transform: scale(1.02);
+    }
+}
+
+.core-outer-rim {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px dashed rgba(57, 255, 20, 0.3);
+    animation: slowRotate 24s linear infinite;
+}
+
+@keyframes slowRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Interlocking Hourglass Triangles */
+.core-hourglass-svg {
+    width: 140px;
+    height: 140px;
+    filter: drop-shadow(0 0 15px var(--omnitrix-green));
+}
+
+.tap-to-activate-hint {
+    position: absolute;
+    bottom: 50px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--omnitrix-green);
+    opacity: 0.8;
+    animation: blinkHint 1.6s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes blinkHint {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* ========================================================
+   SCREEN 2: POPPED / ALIEN SELECTOR DIAL
+   ======================================================== */
+.omnitrix-selector-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 3D Raised Dial Ring */
+.omnitrix-raised-bezel {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 6px solid #1a221d;
+    box-shadow: 
+        0 0 30px var(--omnitrix-glow),
+        inset 0 0 25px rgba(57, 255, 20, 0.4);
+    pointer-events: none;
+    transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.bezel-notches {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(57, 255, 20, 0.7) 0deg 4deg,
+        transparent 4deg 36deg
+    );
+}
+
+/* Center Hologram Projection Disk */
+.omnitrix-core-slap-button {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #021e0a 0%, #050a07 70%, #000 100%);
+    border: 4px solid var(--omnitrix-green);
+    box-shadow: 
+        0 0 25px var(--omnitrix-green),
+        inset 0 0 20px rgba(57, 255, 20, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 25;
+}
+
+.omnitrix-core-slap-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px var(--omnitrix-green);
+}
+
+.omnitrix-core-slap-button:active {
+    transform: scale(0.92);
+}
+
+.alien-hologram-svg-wrapper {
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: holoFlicker 3s infinite ease-in-out;
+}
+
+@keyframes holoFlicker {
+    0%, 100% { opacity: 0.95; transform: translateY(0); }
+    50% { opacity: 0.75; transform: translateY(-2px); }
+    75% { opacity: 1; transform: translateY(1px); }
+}
+
+.alien-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.alien-header-info {
+    position: absolute;
+    top: 48px;
+    text-align: center;
+    z-index: 26;
+    pointer-events: none;
+}
+
+.selected-alien-name {
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 10px var(--omnitrix-green);
+}
+
+.selected-alien-species {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: rgba(57, 255, 20, 0.8);
+    letter-spacing: 1px;
+}
+
+.slap-prompt-badge {
+    position: absolute;
+    bottom: 46px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #000;
+    background: var(--omnitrix-green);
+    padding: 3px 12px;
+    border-radius: 20px;
+    box-shadow: 0 0 12px var(--omnitrix-glow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 26;
+    pointer-events: none;
+}
+
+/* ========================================================
+   SCREEN 3: TRANSFORMATION BLAST SEQUENCE
+   ======================================================== */
+.transform-blast-view {
+    background: #fff;
+    animation: blastFlash 0.65s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes blastFlash {
+    0% { background: #ffffff; opacity: 1; }
+    20% { background: var(--omnitrix-green); opacity: 1; }
+    60% { background: #00ff88; opacity: 0.9; }
+    100% { background: #000000; opacity: 0; }
+}
+
+/* ========================================================
+   SCREEN 4: ACTIVE ALIEN MODE
+   ======================================================== */
+.active-alien-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 24px 16px;
+}
+
+.active-alien-avatar {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.active-alien-avatar:hover {
+    transform: scale(1.08);
+}
+
+.active-alien-name {
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.active-alien-quote {
+    font-size: 0.68rem;
+    font-style: italic;
+    color: #94a3b8;
+    text-align: center;
+    max-width: 260px;
+    margin-bottom: 8px;
+}
+
+.active-timer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 160px;
+    margin-bottom: 6px;
+}
+
+.active-timer-display {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.energy-progress-track {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.energy-progress-bar {
+    height: 100%;
+    width: 100%;
+    background: var(--omnitrix-green);
+    box-shadow: 0 0 8px var(--omnitrix-glow);
+    transition: width 1s linear, background-color 0.3s;
+}
+
+.active-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    width: 220px;
+    margin-top: 4px;
+}
+
+.stat-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.stat-mini span {
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.stat-mini .bar {
+    width: 100%;
+    height: 3px;
+    background: #1e293b;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.stat-mini .bar div {
+    height: 100%;
+}
+
+.flash-timeout {
+    animation: timeoutBlink 0.6s infinite alternate;
+}
+
+@keyframes timeoutBlink {
+    0% { filter: drop-shadow(0 0 10px rgba(255, 34, 34, 0.4)); }
+    100% { filter: drop-shadow(0 0 25px rgba(255, 34, 34, 1)); }
+}
+
+/* ========================================================
+   SCREEN 5: RECHARGE / COOLDOWN (RED)
+   ======================================================== */
+.recharge-core-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.recharge-hourglass {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #2b0303 0%, #000 85%);
+    border: 4px solid var(--omnitrix-red);
+    box-shadow: 0 0 35px var(--omnitrix-red-glow), inset 0 0 20px rgba(255, 34, 34, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: redPulse 1.2s infinite alternate ease-in-out;
+}
+
+@keyframes redPulse {
+    0% { box-shadow: 0 0 20px rgba(255, 34, 34, 0.5); transform: scale(0.97); }
+    100% { box-shadow: 0 0 45px rgba(255, 34, 34, 0.9); transform: scale(1.02); }
+}
+
+.recharge-title {
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: var(--omnitrix-red);
+    letter-spacing: 2px;
+}
+
+.recharge-countdown {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 0 10px var(--omnitrix-red);
+}
+
+/* ========================================================
+   SCREEN 6: SELF-DESTRUCT (AMBER/ORANGE)
+   ======================================================== */
+.self-destruct-core {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.sd-warning-badge {
+    background: #ff5500;
+    color: #000;
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 3px 12px;
+    border-radius: 12px;
+    letter-spacing: 1.5px;
+    animation: sdFlash 0.5s infinite alternate;
+}
+
+@keyframes sdFlash {
+    0% { opacity: 0.6; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+.sd-countdown-large {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #ff5500;
+    text-shadow: 0 0 25px rgba(255, 85, 0, 0.9);
+}
+
+.sd-abort-hint {
+    font-size: 0.68rem;
+    color: #fed7aa;
+}
+
+/* ========================================================
+   SCREEN 7: SCAN DNA (YELLOW)
+   ======================================================== */
+.scan-beam-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.scan-radar-disk {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 3px solid var(--omnitrix-yellow);
+    box-shadow: 0 0 35px rgba(255, 255, 0, 0.8);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scan-sweep-beam {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(from 0deg, rgba(255, 255, 0, 0.6) 0deg 35deg, transparent 35deg 360deg);
+    animation: slowRotate 1.5s linear infinite;
+}
+
+/* ========================================================
+   SCREEN 8: AMBIENT AOD MODE
+   ======================================================== */
+.ambient-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+
+.ambient-hourglass-outline {
+    width: 110px;
+    height: 110px;
+    border: 2px solid rgba(57, 255, 20, 0.35);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ambient-time {
+    font-size: 2rem;
+    font-weight: 300;
+    color: rgba(57, 255, 20, 0.6);
+    letter-spacing: 2px;
+    margin-top: 12px;
+}
+
+/* ========================================================
+   RIGHT PANEL: ALIEN CODEX & STATS
+   ======================================================== */
+.alien-preview-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(5, 10, 8, 0.8);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.preview-svg-box {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 10px;
+}
+
+.preview-alien-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.preview-alien-species {
+    font-size: 0.72rem;
+    color: var(--omnitrix-green);
+    margin-bottom: 8px;
+}
+
+.preview-alien-quote {
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #94a3b8;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.abilities-pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+}
+
+.ability-pill {
+    background: rgba(57, 255, 20, 0.1);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    color: #e2e8f0;
+    font-size: 0.68rem;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+/* Simulator Hardware Triggers */
+.hardware-actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.btn-action {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 9px 8px;
+    color: #cbd5e1;
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.btn-action:hover {
+    background: rgba(57, 255, 20, 0.15);
+    border-color: var(--omnitrix-green);
+    color: #fff;
+}
+
+.btn-action.btn-danger {
+    border-color: rgba(255, 85, 0, 0.4);
+}
+.btn-action.btn-danger:hover {
+    background: rgba(255, 85, 0, 0.2);
+    border-color: #ff5500;
+}
+
+/* Footer Instructions */
+footer.app-footer {
+    padding: 12px 24px;
+    background: rgba(8, 12, 10, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.76rem;
+    color: #64748b;
+}
+
+.instructions-hints {
+    display: flex;
+    gap: 16px;
+}
+
+.key-badge {
+    background: #1e293b;
+    color: #94a3b8;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    border: 1px solid #334155;
+}
+
+/* Modal for API Key Settings */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-card {
+    background: #0f1712;
+    border: 1px solid var(--omnitrix-green);
+    box-shadow: 0 0 30px var(--omnitrix-glow);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 480px;
+    width: 90%;
+}
+
+.modal-card h3 {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.modal-card p {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}

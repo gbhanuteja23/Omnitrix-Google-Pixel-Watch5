@@ -1,0 +1,6 @@
+{
+    "liveServer.settings.root": "/simulator",
+    "files.associations": {
+        "*.kts": "kotlin"
+    }
+}

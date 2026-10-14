@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Omnitrix: Start Simulator & Open Browser",
+            "type": "shell",
+            "command": "powershell -ExecutionPolicy Bypass -File simulator\\serve.ps1",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false
+            }
+        },
+        {
+            "label": "Omnitrix: Open Simulator in Edge Directly",
+            "type": "shell",
+            "command": "Start-Process \"file://${workspaceFolder}/simulator/index.html\"",
+            "problemMatcher": []
+        },
+        {
+            "label": "Wear OS: Check Connected Pixel Watch (ADB)",
+            "type": "shell",
+            "command": "$env:LOCALAPPDATA\\Android\\Sdk\\platform-tools\\adb.exe devices -l",
+            "problemMatcher": []
+        },
+        {
+            "label": "Wear OS: Connect Pixel Watch over Wireless ADB",
+            "type": "shell",
+            "command": "$ip = Read-Host 'Enter Pixel Watch IP and Port (e.g. 192.168.1.100:5555)'; & \"$env:LOCALAPPDATA\\Android\\Sdk\\platform-tools\\adb.exe\" connect $ip",
+            "problemMatcher": []
+        },
+        {
+            "label": "Wear OS: Install Omnitrix APK to Pixel Watch",
+            "type": "shell",
+            "command": "& \"$env:LOCALAPPDATA\\Android\\Sdk\\platform-tools\\adb.exe\" install -r android-wearos\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+            "problemMatcher": [],
+            "dependsOn": []
+        }
+    ]
+}

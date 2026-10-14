@@ -1,0 +1,19 @@
+# Build and Gradle
+.gradle/
+build/
+*/build/
+*.apk
+*.aab
+
+# Android Studio & IDE
+.idea/
+*.iml
+local.properties
+.cxx/
+captures/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*~
